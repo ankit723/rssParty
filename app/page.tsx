@@ -4,11 +4,19 @@ import React, { useState, useEffect } from 'react';
 import GalleryGrid from './components/GalleryGrid';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Announcement from './components/Announcement';
 
 const Home: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [visibleIndex, setVisibleIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisibleIndex((prevIndex) => (prevIndex + 1) % 3);
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -34,7 +42,17 @@ const Home: React.FC = () => {
   return (
     <>
       <div className={`fixed top-0 left-0 w-full z-20 transition-transform duration-300 ${hasScrolled ? '-translate-y-full' : 'translate-y-0'} announcement-debug`}>
-        <Announcement />
+        <div className='bg-primary-color w-full text-center'>
+          <p className={`announcement-sentence ${visibleIndex === 0 ? 'visible' : 'hidden'}`}>
+            Be a volunteer and get good perks
+          </p>
+          <p className={`announcement-sentence ${visibleIndex === 1 ? 'visible' : 'hidden'}`}>
+            Be a member and be a part of great community
+          </p>
+          <p className={`announcement-sentence ${visibleIndex === 2 ? 'visible' : 'hidden'}`}>
+            Our goal is to provide things in the interest of public demands
+          </p>
+        </div>
       </div>
 
       <div className={`absolute inset-0 bg-primary-color transition-transform duration-[1s] ${isLoaded ? '-translate-y-full' : 'translate-y-0'}`} />
