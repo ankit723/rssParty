@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         <div className={`fixed top-[1.15rem] left-0 w-screen z-10 transition-transform duration-300`}>
           <Navbar />
         </div>
-        <div className={`relative ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 mt-16`}>
+        <div className={`relative ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 mt-16`}>
         
           <div className="container mx-auto p-4">
             <div className="flex justify-center">
