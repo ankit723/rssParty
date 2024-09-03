@@ -20,7 +20,7 @@ const config: Config = {
     },
   },
    plugins: [
-    function ({ addUtilities }) {
+    function ({ addUtilities }:{addUtilities:any}) {
       addUtilities({
         'no-scrollbar': {
           'overflow': 'hidden',
